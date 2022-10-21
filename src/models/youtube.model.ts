@@ -1,5 +1,6 @@
 export interface YoutubeSearchParams {
 	q: string;
+	maxResults: number;
 }
 
 export interface YoutubeItemSnippet {
