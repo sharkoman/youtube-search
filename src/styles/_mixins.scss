@@ -1,0 +1,21 @@
+@use 'sass:map';
+@use 'variables' as *;
+
+/*------------------------------------*\
+  # - Media Breakpoints
+\*------------------------------------*/
+
+@mixin media-breakpoint-up($media) {
+    $media_value: map.get($breakpoints-list, $media);
+
+    @media (min-width: $media_value) {
+        @content;
+    }
+}
+
+/*------------------------------------*\
+  # - Transitions
+\*------------------------------------*/
+@mixin transition($duration: 0.35) {
+    transition: all #{$duration}s ease-in-out;
+}

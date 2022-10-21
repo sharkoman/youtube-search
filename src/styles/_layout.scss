@@ -1,0 +1,17 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+/*------------------------------------*\
+  # - CONTAINERS
+\*------------------------------------*/
+
+.container {
+	margin: 0 auto;
+	padding-inline: 1rem;
+
+	@each $media, $width in $container-max-width {
+		@include media-breakpoint-up($media) {
+			max-width: $width;
+		}
+	}
+}
