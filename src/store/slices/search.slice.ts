@@ -56,17 +56,6 @@ export const fetchSearchResults = createAsyncThunk(
 	}
 );
 
-// export const fetchTodos = createAsyncThunk<any[]>('search/fetch', async () => {
-// 	const response = await fetch(`https://jsonplaceholder.typicode.com/todos`);
-
-// 	// Alos, set a type for the `data` constant:
-// 	const data: any[] = await response.json();
-// 	return data;
-
-// 	// We could also use `as` to coerce its type
-// 	// as in the RTK docs.
-// });
-
 export const { setSearchParams, resetSearchParams } = searchSlice.actions;
 
 export const searchParamsSelector = (state: RootState) => state.search;
