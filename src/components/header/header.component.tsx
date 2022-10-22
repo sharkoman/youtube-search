@@ -1,10 +1,12 @@
 import { MobileSearchBar, SearchIcon, SearchForm, MobileFilterForm } from 'components';
+import { useYoutubeSearch } from 'hooks';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
 interface Props extends React.HTMLProps<HTMLDivElement> {}
 
 export const Header: React.FC<Props> = () => {
+	const { isLoading, status } = useYoutubeSearch();
 	const [isSearchActive, setIsSearchActive] = useState(false);
 
 	const toggleSearchBar = () => {
@@ -52,13 +54,13 @@ export const Header: React.FC<Props> = () => {
 				</div>
 			</header>
 
-			<div className="filters__container">
+			{!isLoading && status !== 'idle' && <div className="filters__container">
 				<div className="container">
 					<div className="filters__controls">
 						<MobileFilterForm />
 					</div>
 				</div>
-			</div>
+			</div>}
 		</>
 	);
 };

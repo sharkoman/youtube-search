@@ -4,11 +4,12 @@ import { useForm } from 'react-hook-form';
 import { useAppDispatch } from 'store/store';
 import { YoutubeSearchParams } from 'models';
 import { fetchSearchResults } from 'store/slices';
+import { useYoutubeSearch } from 'hooks';
 
 interface Props extends React.HTMLProps<HTMLDivElement> {}
 
 export const SearchForm: React.FC<Props> = () => {
-	const dispatch = useAppDispatch();
+	const { dispatch } = useYoutubeSearch();
 
 	const { handleSubmit, register, setFocus, reset } = useForm<Partial<YoutubeSearchParams>>({
 		defaultValues: {
@@ -17,7 +18,6 @@ export const SearchForm: React.FC<Props> = () => {
 	});
 
 	const onSubmit = (data: Partial<YoutubeSearchParams>) => {
-		console.log(data);
 		dispatch(fetchSearchResults(data));
 	};
 
