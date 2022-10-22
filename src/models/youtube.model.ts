@@ -24,6 +24,7 @@ interface PageInfo {
 interface ID {
 	kind: string;
 	videoId: string;
+	playlistId: string;
 }
 
 interface Snippet {
