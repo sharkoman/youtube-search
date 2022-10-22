@@ -6,12 +6,17 @@
 \*------------------------------------*/
 
 .container {
+	position: relative;
+	padding-inline: 0.5rem;
 	margin: 0 auto;
-	padding-inline: 1rem;
 
 	@each $media, $width in $container-max-width {
 		@include media-breakpoint-up($media) {
 			max-width: $width;
 		}
 	}
+}
+
+.main-content {
+	padding-top: 2rem;
 }

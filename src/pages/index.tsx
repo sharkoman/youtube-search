@@ -1,3 +1,4 @@
+import { Layout } from 'components';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useEffect } from 'react';
@@ -19,19 +20,17 @@ const Home: NextPage = () => {
 	}, [dispatch]);
 
 	return (
-		<div className="container">
+		<>
 			<Head>
 				<title>Youtube</title>
 				<meta name="description" content="Youtube search videos" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-
-			<main>
-				<h2>Heading</h2>
-			</main>
-
-			<footer>footer...</footer>
-		</div>
+			
+			<div>
+				body here...
+			</div>
+		</>
 	);
 };
 
