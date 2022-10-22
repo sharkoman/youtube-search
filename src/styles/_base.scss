@@ -1,4 +1,5 @@
 @use 'variables' as *;
+@use 'mixins' as *;
 
 * {
 	box-sizing: border-box;
@@ -15,4 +16,33 @@ form {
 
 body {
 	background-color: $body-bg;
+
+	@include media-breakpoint-up(lg) {
+		padding-top: $header-height;
+	}
+}
+
+svg {
+	display: inline-block;
+}
+
+input {
+	color: $body-color;
+	font-size: 1.15rem;
+
+	&:active, &:focus {
+		outline: none;
+	}
+}
+
+button {
+	@include button();
+}
+
+select {
+	background-color: $gray;
+	border-radius: 4px;
+	padding: 0.5rem;
+    font-size: 1rem;
+	border: 1px solid lightgrey;
 }

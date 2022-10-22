@@ -1,31 +1,43 @@
+@use 'variables' as *;
 @use 'mixins' as *;
 
 .header {
-	background-color: white;
+	background-color: $primary;
 	box-shadow: 0 1px 8px rgb(0 0 0 / 8%);
+	position: static;
+	color: white;
+
+	@include media-breakpoint-up(lg) {
+		background-color: white;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 2;
+		color: $body-color;
+	}
 
 	&__inner {
 		position: relative;
 		display: flex;
-		height: 56px;
+		height: $header-height;
 		justify-content: space-between;
 		align-items: center;
 	}
 
-	&__logo-small {
-		display: block;
+	&__logo {
+		height: $header-height;
+		width: 63px;
 
 		@include media-breakpoint-up(lg) {
-			display: none;
+			width: 200px;
 		}
 	}
 
-	&__logo-large {
-		display: none;
-
-		@include media-breakpoint-up(lg) {
-			display: block;
-		}
+	&__options {
+		flex: 1;
+		display: flex;
+		justify-content: flex-end;
+		gap: 1rem;
 	}
 
 	&__search-btn {
@@ -35,24 +47,91 @@
 		border: none;
 		padding: 0;
 		cursor: pointer;
+		color: white;
+
+		@include media-breakpoint-up(lg) {
+			display: none;
+		}
 
 		svg {
-			width: 100%;
+			width: 24px;
+		}
+	}
+
+	&__search-form {
+		display: none;
+		flex: 1;
+		max-width: 80%;
+		
+		@include media-breakpoint-up(lg) {
+			display: block;
 		}
 	}
 
 	&__mobile-search {
+		display: none;
 		position: absolute;
-		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		inset: 0;
-		display: flex;
-		height: 56px;
-		background-color: white;
+		height: $header-height;
+		background-color: $primary;
+
+		&--show {
+			display: flex;
+			gap: 1rem;
+
+			@include media-breakpoint-up(lg) {
+				display: none;
+			}
+		}
+	}
+
+	&__mobile-search-form {
+		flex: 1;
+	}
+
+	&__mobile-search-back {
+		color: white;
 
 		@include media-breakpoint-up(lg) {
-			display: none;
+			color: $body-color;
+		}
+	}
+}
+
+
+.search-form {
+	&__wrapper {
+		display: flex;
+	}
+
+	&__input {
+		flex: 1 1 auto;
+		display: block;
+		border: 1px solid $gray;
+		padding: 0 0.5rem;
+		height: 40px;
+		border: 1px solid darken($gray, 10%);
+	}
+
+	&__button {
+		@include button();
+		display: block;
+		flex: 0 1 80px;
+		color: $body-color;
+		background-color: $gray;
+		padding: 0 2rem;
+		border: 1px solid darken($gray, 10%);
+		border-inline-start: none;
+		@include transition();
+
+		&:hover, &:focus, &:active {
+			background-color: darken($gray, 10%);
+		}
+
+		svg {
+			width: 24px;
 		}
 	}
 }

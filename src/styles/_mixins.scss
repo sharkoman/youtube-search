@@ -6,16 +6,29 @@
 \*------------------------------------*/
 
 @mixin media-breakpoint-up($media) {
-    $media_value: map.get($breakpoints-list, $media);
+	$media_value: map.get($breakpoints-list, $media);
 
-    @media (min-width: $media_value) {
-        @content;
-    }
+	@media (min-width: $media_value) {
+		@content;
+	}
 }
 
 /*------------------------------------*\
   # - Transitions
 \*------------------------------------*/
 @mixin transition($duration: 0.35) {
-    transition: all #{$duration}s ease-in-out;
+	transition: all #{$duration}s ease-in-out;
+}
+
+
+/*------------------------------------*\
+  # - Buttons
+\*------------------------------------*/
+@mixin button() {
+	display: inline-block;
+	background: transparent;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	color: inherit;
 }

@@ -1,0 +1,16 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.filters {
+	&__container {
+		padding: 1rem 0;
+		background-color: white;
+		border-bottom: 1px solid $gray;
+	}
+
+	&__controls {
+		display: flex;
+		gap: 1rem;
+	}
+}
+
