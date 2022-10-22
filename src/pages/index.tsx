@@ -1,11 +1,10 @@
-import { Layout, ResultsList } from 'components';
+import { ResultsList } from 'components';
+import { useYoutubeSearch } from 'hooks';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { searchParamsSelector } from 'store/slices';
-import { useAppSelector } from 'store/store';
 
 const Home: NextPage = () => {
-	const { isLoading, data } = useAppSelector(searchParamsSelector);
+	const { isLoading, data } = useYoutubeSearch();
 
 	return (
 		<>
@@ -16,7 +15,11 @@ const Home: NextPage = () => {
 			</Head>
 
 			<div>
-				<ResultsList data={data} isLoading={isLoading} />
+				<ResultsList
+					data={data}
+					isLoading={isLoading}
+					totalCount={data?.pageInfo?.totalResults!}
+				/>
 			</div>
 		</>
 	);

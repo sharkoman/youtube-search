@@ -3,9 +3,14 @@
 
 .filters {
 	&__container {
+		display: block;
 		padding: 1rem 0;
 		background-color: white;
 		border-bottom: 1px solid $gray;
+
+		@include media-breakpoint-up(lg) {
+			display: none;
+		}
 	}
 
 	&__controls {
