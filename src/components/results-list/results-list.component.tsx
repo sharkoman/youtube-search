@@ -1,6 +1,7 @@
 import { Spinner, VideoSnippet } from 'components';
 import { YoutubeSearchResponse } from 'models';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 interface Props {
@@ -34,9 +35,15 @@ export const ResultsList: React.FC<Props> = ({ data, isLoading, totalCount }) =>
 				</div>
 			)}
 
-			{results.map((item) => (
-				<VideoSnippet key={item.id.videoId} video={item} />
-			))}
+			<div className="results-list__content">
+				{results.map((item) => (
+					<Link key={item.id.videoId} href={item.url} target="_blank">
+						<a>
+							<VideoSnippet video={item} />
+						</a>
+					</Link>
+				))}
+			</div>
 		</div>
 	);
 };

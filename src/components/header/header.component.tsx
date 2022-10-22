@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 interface Props extends React.HTMLProps<HTMLDivElement> {}
 
 export const Header: React.FC<Props> = () => {
-	const { isLoading, status } = useYoutubeSearch();
+	const { data } = useYoutubeSearch();
 	const [isSearchActive, setIsSearchActive] = useState(false);
 
 	const toggleSearchBar = () => {
@@ -54,7 +54,7 @@ export const Header: React.FC<Props> = () => {
 				</div>
 			</header>
 
-			{!isLoading && status !== 'idle' && <div className="filters__container">
+			{data.items && data.items.length > 0 && <div className="filters__container">
 				<div className="container">
 					<div className="filters__controls">
 						<MobileFilterForm />

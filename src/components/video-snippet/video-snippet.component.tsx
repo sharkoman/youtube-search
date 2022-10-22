@@ -10,10 +10,9 @@ export const VideoSnippet: React.FC<Props> = ({ video }) => {
 	return (
 		<div className="video-snippet">
 			<div className="video-snippet__thumb">
-				<Image
+				<img
 					loading="lazy"
 					src={video.snippet.thumbnails.medium.url}
-					objectFit="cover"
 					width="320"
 					height="180"
 					alt={video.snippet.title}

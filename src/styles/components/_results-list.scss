@@ -2,12 +2,11 @@
 @use 'mixins' as *;
 
 .results-list {
-	display: none;
-	flex-direction: column;
-	gap: 1rem;
-
-	@include media-breakpoint-up(lg) {
+	
+	&__content {
 		display: flex;
+		flex-direction: column;
+		gap: 1rem;
 	}
 
 	&__header {

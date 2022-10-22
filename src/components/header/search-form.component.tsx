@@ -1,14 +1,15 @@
-import React, { FormEvent, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { SearchIcon } from 'components';
 import { useForm } from 'react-hook-form';
-import { useAppDispatch } from 'store/store';
 import { YoutubeSearchParams } from 'models';
 import { fetchSearchResults } from 'store/slices';
 import { useYoutubeSearch } from 'hooks';
+import { useRouter } from 'next/router';
 
 interface Props extends React.HTMLProps<HTMLDivElement> {}
 
 export const SearchForm: React.FC<Props> = () => {
+	const { push } = useRouter();
 	const { dispatch } = useYoutubeSearch();
 
 	const { handleSubmit, register, setFocus, reset } = useForm<Partial<YoutubeSearchParams>>({
@@ -17,8 +18,11 @@ export const SearchForm: React.FC<Props> = () => {
 		},
 	});
 
-	const onSubmit = (data: Partial<YoutubeSearchParams>) => {
-		dispatch(fetchSearchResults(data));
+	const onSubmit = (params: Partial<YoutubeSearchParams>) => {
+		push('/', {
+			query: params
+		});
+		dispatch(fetchSearchResults(params));
 	};
 
 	useEffect(() => {

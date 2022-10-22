@@ -2,9 +2,22 @@ import { ResultsList } from 'components';
 import { useYoutubeSearch } from 'hooks';
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 const Home: NextPage = () => {
-	const { isLoading, data } = useYoutubeSearch();
+	const { isLoading, data, fetchSearchResults, dispatch } = useYoutubeSearch();
+	const router = useRouter();
+
+	useEffect(() => {
+		if (router.query['q']) {
+			dispatch(
+				fetchSearchResults({
+					q: router.query['q'] as string,
+				})
+			);
+		}
+	}, [router]);
 
 	return (
 		<>
