@@ -6,3 +6,4 @@ export * from './header/mobile-filter-form.component';
 export * from './layout/layout.component';
 export * from './results-list/results-list.component';
 export * from './video-snippet/video-snippet.component';
+export * from './spinner/spinner.component';

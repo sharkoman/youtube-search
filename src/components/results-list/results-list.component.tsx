@@ -1,4 +1,4 @@
-import { VideoSnippet } from 'components';
+import { Spinner, VideoSnippet } from 'components';
 import { YoutubeSearchResponse } from 'models';
 import React from 'react';
 
@@ -7,8 +7,10 @@ interface Props {
 	isLoading: boolean;
 }
 
-export const ResultsList: React.FC<Props> = ({ data }) => {
+export const ResultsList: React.FC<Props> = ({ data, isLoading }) => {
 	const results = data.items || [];
+
+	if (isLoading) return <Spinner />;
 
 	return (
 		<div className="results-list">
