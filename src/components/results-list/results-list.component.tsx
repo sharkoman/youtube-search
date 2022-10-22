@@ -37,7 +37,13 @@ export const ResultsList: React.FC<Props> = ({ data, isLoading, totalCount }) =>
 
 			<div className="results-list__content">
 				{results.map((item) => (
-					<Link key={item.id.videoId} href={item.url} target="_blank">
+					<Link
+						key={item.id?.videoId || item.id.playlistId}
+						href={`https://www.youtube.com/watch?v=${
+							item.id?.videoId || item.id.playlistId
+						}`}
+						target="_blank"
+					>
 						<a>
 							<VideoSnippet video={item} />
 						</a>
