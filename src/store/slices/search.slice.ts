@@ -5,14 +5,14 @@ import type { RootState } from '../store';
 
 interface SearchSlice {
 	queryParams: Partial<YoutubeSearchParams>;
-	results: YoutubeItemSnippet[];
+	data: YoutubeSearchResponse;
 	isLoading: boolean;
 	status: 'pending' | 'succeeded' | 'rejected' | 'idle';
 }
 
 const initialState = {
 	queryParams: {},
-	results: [],
+	data: {},
 	isLoading: false,
 	status: 'idle',
 } as SearchSlice;
@@ -34,7 +34,7 @@ export const searchSlice = createSlice({
 			state.status = 'pending';
 		}),
 		builder.addCase(fetchSearchResults.fulfilled, (state, { payload }) => {
-			state.results = (payload as YoutubeSearchResponse).items;
+			state.data = payload;
 			state.isLoading = false;
 			state.status = 'succeeded';
 		}),
