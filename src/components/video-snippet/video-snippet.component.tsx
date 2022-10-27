@@ -1,5 +1,4 @@
 import { YoutubeItemSnippet } from 'models';
-import Image from 'next/image';
 import React from 'react';
 
 interface Props extends React.HTMLProps<HTMLDivElement> {

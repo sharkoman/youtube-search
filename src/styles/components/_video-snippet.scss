@@ -6,9 +6,12 @@
 	gap: 1rem;
 
 	&__thumb {
-		flex: 0 0 320px;
-		width: 320px;
+		flex: 0 0 33.33%;
 		height: 180px;
+
+		@include media-breakpoint-up(lg) {
+
+		}
 	}
 
 	&__text-wrapper {
@@ -18,7 +21,7 @@
 	&__title {
 		color: $body-color;
 		font-size: 1.2rem;
-		line-height: 2.6rem;
+		line-height: 1.6;
 		font-weight: 600;
 	}
 
